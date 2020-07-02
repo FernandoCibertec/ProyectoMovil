@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/login_background"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerVertical="true">
+        
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="200dp"
+            android:src="@drawable/logocibertec"
+            android:layout_gravity="center_horizontal">
+        </ImageView>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerVertical="false">
+
+            <ImageButton
+
+                android:id="@+id/ibtnProfesor"
+                android:layout_width="195dp"
+                android:layout_height="272dp"
+                android:layout_gravity="left"
+                android:layout_marginStart="7dp"
+                android:layout_marginEnd="7dp"
+                android:src="@drawable/profesoricon" />
+
+            <ImageButton
+
+                android:id="@+id/ibtnEstudiante"
+                android:layout_width="195dp"
+                android:layout_height="272dp"
+                android:layout_gravity="left"
+                android:src="@drawable/estudianteicon" />
+
+        </TableRow
+            >
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerVertical="false">
+
+            <TextView
+                android:text="Profesor"
+                android:layout_width="195dp"
+                tools:ignore="HardcodedText"
+                android:textSize="20dp"
+                android:textColor="#ffff"
+                android:layout_marginStart="70dp">
+            </TextView>
+            <TextView
+                android:text="Estudiante"
+                android:layout_width="195dp"
+                android:textSize="20dp"
+                android:textColor="#ffff"
+                tools:ignore="HardcodedText">
+            </TextView>
+
+
+        </TableRow>
+
+
+    </LinearLayout>
+</RelativeLayout>

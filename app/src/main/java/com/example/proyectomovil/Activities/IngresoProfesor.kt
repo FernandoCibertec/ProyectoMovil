@@ -5,9 +5,10 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import com.example.proyectomovil.R
-import android.widget.AdapterView
 
 class IngresoProfesor : AppCompatActivity() {
+
+
 
     lateinit var opciones:Spinner
     private var arrayAdapter: ArrayAdapter<String>? = null
@@ -22,4 +23,6 @@ class IngresoProfesor : AppCompatActivity() {
         opciones?.adapter = arrayAdapter
 
     }
+
+
 }

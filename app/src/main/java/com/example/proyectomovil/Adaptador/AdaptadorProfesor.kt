@@ -4,13 +4,15 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ExpandableListView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectomovil.Beans.Profesor
 import com.example.proyectomovil.R
+import com.example.proyectomovil.pojo.ObjListaPROFESOR
 import kotlinx.android.synthetic.main.profesor.view.*
 
-class AdaptadorProfesor (var lista:List<Profesor>, con: Context):
+public class AdaptadorProfesor (val lista:List<ObjListaPROFESOR>, val clickListener: (ObjListaPROFESOR) -> Unit):
     RecyclerView.Adapter<AdaptadorProfesor.ProfesorHolder>(){
     public class ProfesorHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         fun binditems(oProfesor:Profesor){
@@ -36,7 +38,7 @@ class AdaptadorProfesor (var lista:List<Profesor>, con: Context):
         return lista.size
     }
 
-    override fun onBindViewHolder(holder: ProfesorHolder, position: Int) {
+    override fun onBindViewHolder(holder: AdaptadorProfesor.ProfesorHolder, position: Int) {
         holder?.itemView.ProfesorID?.text = lista.get(position).iddocente.toString()
         holder?.itemView.ProfesorNombre?.text = lista.get(position).nombre
         holder?.itemView.ProfesorUsuario.text = lista.get(position).usuario

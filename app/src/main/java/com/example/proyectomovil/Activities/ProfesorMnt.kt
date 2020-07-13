@@ -88,7 +88,11 @@ class ProfesorMnt : AppCompatActivity() {
         mntPRecycler.setLayoutManager(ll)
         mntPRecycler.setHasFixedSize(true)
 
+        mntPRecycler.setAdapter(oAdaptadorPROFESOR2)
     }
+
+
+
 
     /*oNuevoPaciente = Dialog(this)
         oNuevoPaciente.requestWindowFeature(Window.FEATURE_NO_TITLE)

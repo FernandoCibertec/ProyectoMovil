@@ -5,20 +5,21 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".Activities.IngresoProfesor">
+    tools:context=".Activities.IngresoEstudiante">
+
 
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="idProfesor" />
+            android:text="Id Estudiante" />
 
         <EditText
-            android:id="@+id/ingresoPtxtidprofesor"
+            android:id="@+id/ingresoEtxtidestudiante"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -30,13 +31,13 @@
         android:layout_height="match_parent" >
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nombres" />
 
         <EditText
-            android:id="@+id/ingresoPtxtnombres"
+            android:id="@+id/ingresoEtxtNombres"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -48,13 +49,13 @@
         android:layout_height="match_parent" >
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Apellidos" />
 
         <EditText
-            android:id="@+id/ingresoPtxtapellidos"
+            android:id="@+id/ingresoEtxtApellidos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -66,31 +67,13 @@
         android:layout_height="match_parent" >
 
         <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Telefono" />
-
-        <EditText
-            android:id="@+id/ingresoPtxtusuario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/textView15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Dni" />
 
         <EditText
-            android:id="@+id/ingresoPtxtclave"
+            android:id="@+id/ingresoEtxtDni"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -102,19 +85,17 @@
         android:layout_height="match_parent" >
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="IdCurso" />
+            android:text="Id Grado" />
 
         <EditText
-            android:id="@+id/ingresoPtxtidcurso"
+            android:id="@+id/ingresoEtxtIdgrado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName" />
-
-
     </TableRow>
 
     <TableRow
@@ -122,13 +103,13 @@
         android:layout_height="match_parent" >
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="IdUsuario" />
+            android:text="Cod Estado" />
 
         <EditText
-            android:id="@+id/ingresoPtxtIdUsuario"
+            android:id="@+id/ingresoEtxtCod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -139,23 +120,41 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Id Usuario" />
+
+        <EditText
+            android:id="@+id/ingresoEtxtIdusuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/ingresoPbtnGrabar"
+            android:id="@+id/ingresoEbtnGrabar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Grabar" />
 
         <Button
-            android:id="@+id/ingresoPbtnCerrar"
+            android:id="@+id/ingresoEbtnCerrar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cerrar" />
 
         <Button
-            android:id="@+id/ingresoPbtnEliminar"
+            android:id="@+id/ingresoEbtnElimina"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Eliminar" />
+            android:text="Elimina" />
     </TableRow>
+
 </LinearLayout>

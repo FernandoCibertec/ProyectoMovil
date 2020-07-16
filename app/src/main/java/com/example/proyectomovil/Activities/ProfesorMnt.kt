@@ -9,6 +9,7 @@ import android.view.Window
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectomovil.Adaptador.AdaptadorPROFESOR2
 import com.example.proyectomovil.R
@@ -17,6 +18,7 @@ import com.example.proyectomovil.pojo.ObjPROFESOR
 import com.example.proyectomovil.pojo.PROFESORRESPONSE
 import com.example.proyectomovil.rest.RestProfesor
 import com.example.proyectomovil.rest.iProfesor
+import kotlinx.android.synthetic.main.activity_ingreso_profesor.*
 import kotlinx.android.synthetic.main.activity_profesor_mnt.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,7 +31,7 @@ class ProfesorMnt : AppCompatActivity() {
     lateinit var oNuevoProfesor: Dialog
     lateinit var oLista:List<ObjListaPROFESOR>
     lateinit var oAdaptadorPROFESOR2: AdaptadorPROFESOR2
-    lateinit var oObjPROFESOR:ObjPROFESOR
+    lateinit var oObjPROFESOR:ObjListaPROFESOR
     var TIPOACCION:String = "N"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,36 +52,41 @@ class ProfesorMnt : AppCompatActivity() {
         oNuevoProfesor.setContentView(R.layout.activity_ingreso_profesor)
         var obtnGrabar = oNuevoProfesor.findViewById(R.id.ingresoPbtnGrabar) as Button
         var obtnCerrar = oNuevoProfesor.findViewById(R.id.ingresoPbtnCerrar) as Button
+        var obtnEliminar = oNuevoProfesor.findViewById(R.id.ingresoPbtnEliminar) as Button
+
+
 
         obtnGrabar.setOnClickListener(){
+            GrabarProfesor()
             oNuevoProfesor.dismiss()
         }
         obtnCerrar.setOnClickListener(){
             oNuevoProfesor.dismiss()
         }
+        obtnEliminar.isEnabled= false
+        obtnEliminar.isClickable=false
         oNuevoProfesor.show()
     }
 
     fun GrabarProfesor(){
-        var onuevoIdDocente = oNuevoProfesor.findViewById(R.id.ingresoPtxtidprofesor) as EditText
-        var onuevoNombre = oNuevoProfesor.findViewById(R.id.ingresoPtxtnombres) as EditText
-        var onuevoApellido = oNuevoProfesor.findViewById(R.id.ingresoPtxtapellidos) as EditText
-        var onuevoUsuario = oNuevoProfesor.findViewById(R.id.ingresoPtxtusuario) as EditText
-        var onuevoClave = oNuevoProfesor.findViewById(R.id.ingresoPtxtclave) as EditText
-        var onuevoIdCurso = oNuevoProfesor.findViewById(R.id.ingresoPtxtidcurso) as EditText
-        var onuevoIdUsuario = oNuevoProfesor.findViewById(R.id.ingresoPtxtIdUsuario) as EditText
+        val onuevoIdDocente = oNuevoProfesor.findViewById(R.id.ingresoPtxtidprofesor) as EditText
+        val onuevoNombre = oNuevoProfesor.findViewById(R.id.ingresoPtxtnombres) as EditText
+        val onuevoApellido = oNuevoProfesor.findViewById(R.id.ingresoPtxtapellidos) as EditText
+        val onuevoUsuario = oNuevoProfesor.findViewById(R.id.ingresoPtxtusuario) as EditText
+        val onuevoClave = oNuevoProfesor.findViewById(R.id.ingresoPtxtclave) as EditText
+        val onuevoIdCurso = oNuevoProfesor.findViewById(R.id.ingresoPtxtidcurso) as EditText
+        val onuevoIdUsuario = oNuevoProfesor.findViewById(R.id.ingresoPtxtIdUsuario) as EditText
 
         if (TIPOACCION=="N"){
-            oObjPROFESOR = ObjPROFESOR()
+            oObjPROFESOR = ObjListaPROFESOR()
             oObjPROFESOR.idDocente=0;
-            oObjPROFESOR.nombre = onuevoNombre.text.toString()
-            oObjPROFESOR.apellido = onuevoApellido.text.toString()
-            oObjPROFESOR.usuario = onuevoUsuario.text.toString()
-            oObjPROFESOR.clave = onuevoClave.text.toString()
-            oObjPROFESOR.idCurso = parseInt(onuevoIdCurso.text.toString())
-            oObjPROFESOR.idUsuario = parseInt(onuevoIdUsuario.text.toString())
-
         }
+        oObjPROFESOR.nombre = onuevoNombre.text.toString()
+        oObjPROFESOR.apellido = onuevoApellido.text.toString()
+        oObjPROFESOR.usuario = onuevoUsuario.text.toString()
+        oObjPROFESOR.clave = onuevoClave.text.toString()
+        oObjPROFESOR.idCurso = parseInt(onuevoIdCurso.text.toString())
+        oObjPROFESOR.idUsuario = parseInt(onuevoIdUsuario.text.toString())
 
         val oiProfesor:iProfesor
         oiProfesor= RestProfesor().getPROFESOR()!!.create(iProfesor::class.java)
@@ -93,6 +100,7 @@ class ProfesorMnt : AppCompatActivity() {
                 Log.d("body", response.body().toString())
                 try {
                     oObjPROFESOR.idDocente = response.body()!!.idDocente
+
                     MostrarListado()
                 }catch (e:java.lang.Exception){
                     Log.d("AppWs", e.toString())
@@ -131,9 +139,35 @@ class ProfesorMnt : AppCompatActivity() {
         })
     }
 
+    public fun CargarVentanaProfesor(){
+        oNuevoProfesor = Dialog(this)
+        oNuevoProfesor.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        oNuevoProfesor.setCancelable(false)
+        oNuevoProfesor.setContentView(R.layout.activity_ingreso_profesor)
+        var obtnGrabar = oNuevoProfesor.findViewById(R.id.ingresoPbtnGrabar) as Button
+        var obtnCerrar = oNuevoProfesor.findViewById(R.id.ingresoPbtnCerrar) as Button
+        var obtnEliminar = oNuevoProfesor.findViewById(R.id.ingresoPbtnEliminar) as Button
+
+        obtnGrabar.setOnClickListener(){
+            GrabarProfesor()
+            oNuevoProfesor.dismiss()
+        }
+        obtnCerrar.setOnClickListener(){
+            oNuevoProfesor.dismiss()
+        }
+        obtnEliminar.setOnClickListener(){
+            EliminarRegistroProfesor()
+            oNuevoProfesor.dismiss()
+        }
+        oNuevoProfesor.show()
+    }
+
     fun MostrarListado(){
         oAdaptadorPROFESOR2 = AdaptadorPROFESOR2(oLista){
-
+            oObjPROFESOR = it
+            TIPOACCION = "A"
+            CargarVentanaProfesor()
+            MostrarRegistro()
         }
         mntPRecycler.setAdapter(oAdaptadorPROFESOR2)
         val ll=LinearLayoutManager(this)
@@ -143,26 +177,46 @@ class ProfesorMnt : AppCompatActivity() {
         mntPRecycler.setAdapter(oAdaptadorPROFESOR2)
     }
 
+    fun MostrarRegistro(){
+        var onuevoIdDocente = oNuevoProfesor.findViewById(R.id.ingresoPtxtidprofesor) as EditText
+        var onuevoNombre = oNuevoProfesor.findViewById(R.id.ingresoPtxtnombres) as EditText
+        var onuevoApellido = oNuevoProfesor.findViewById(R.id.ingresoPtxtapellidos) as EditText
+        var onuevoUsuario = oNuevoProfesor.findViewById(R.id.ingresoPtxtusuario) as EditText
+        var onuevoClave = oNuevoProfesor.findViewById(R.id.ingresoPtxtclave) as EditText
+        var onuevoIdCurso = oNuevoProfesor.findViewById(R.id.ingresoPtxtidcurso) as EditText
+        var onuevoIdUsuario = oNuevoProfesor.findViewById(R.id.ingresoPtxtIdUsuario) as EditText
 
 
+        onuevoIdDocente.setText(oObjPROFESOR.idDocente.toString())
+        onuevoNombre.setText(oObjPROFESOR.nombre)
+        onuevoApellido.setText(oObjPROFESOR.apellido)
+        onuevoUsuario.setText(oObjPROFESOR.usuario)
+        onuevoClave.setText(oObjPROFESOR.clave)
+        onuevoIdCurso.setText(oObjPROFESOR.idCurso.toString())
+        onuevoIdUsuario.setText(oObjPROFESOR.idUsuario.toString())
+    }
+    fun EliminarRegistroProfesor(){
+        val onuevoIdDocente = oNuevoProfesor.findViewById(R.id.ingresoPtxtidprofesor) as EditText
 
-    /*oNuevoPaciente = Dialog(this)
-        oNuevoPaciente.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        oNuevoPaciente.setCancelable(false)
-        oNuevoPaciente.setContentView(R.layout.activity_registro_paciente)
-        var obtnGrabar = oNuevoPaciente.findViewById(R.id.btnGrabar) as Button
-        var obtnCerrar = oNuevoPaciente.findViewById(R.id.btnCerrar) as Button
+        val oiProfesor:iProfesor
+        oiProfesor= RestProfesor().getPROFESOR()!!.create(iProfesor::class.java)
+        val call: Call<ObjPROFESOR> = oiProfesor.getElimina(parseInt(onuevoIdDocente.text.toString()))
+        call.enqueue(object :Callback<ObjPROFESOR?>{
+            override fun onResponse(    call: Call<ObjPROFESOR?>?,
+                                        response: retrofit2.Response<ObjPROFESOR?>
+            ) {
+                Log.d("body", response.body().toString())
+                try {
+                    oObjPROFESOR.idDocente = response.body()!!.idDocente
+                    MostrarListado()
+                }catch (e:java.lang.Exception){
+                    Log.d("AppWs", e.toString())
+                }
+            }
 
-        obtnGrabar.setOnClickListener(){
-            GrabarNuevoPaciente()
-            oNuevoPaciente.dismiss()
-        }
-        obtnCerrar.setOnClickListener(){
-            oNuevoPaciente.dismiss()
-        }
-        oNuevoPaciente.show()*/
-
-    public fun registroNuevoProfesor(){
-
+            override fun onFailure(call: Call<ObjPROFESOR?>, t: Throwable) {
+                Log.d("ERROR", t.toString())
+            }
+        })
     }
 }

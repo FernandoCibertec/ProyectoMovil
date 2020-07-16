@@ -4,39 +4,51 @@ package com.example.proyectomovil.pojo;
 import java.io.Serializable;
 import android.os.Parcel;
 import android.os.Parcelable;
-
+import android.os.Parcelable.Creator;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class ObjListaPROFESOR implements Serializable, Parcelable
 {
 
-    @SerializedName("iddocente")
+    @SerializedName("IdDocente")
     @Expose
-    private Integer iddocente;
-    @SerializedName("nombre")
+    private Integer idDocente;
+    @SerializedName("Nombre")
     @Expose
     private String nombre;
-    @SerializedName("apellidos")
+    @SerializedName("Apellido")
     @Expose
-    private String apellidos;
-    @SerializedName("usuario")
+    private String apellido;
+    @SerializedName("Usuario")
     @Expose
     private String usuario;
-    @SerializedName("clave")
+    @SerializedName("Clave")
     @Expose
     private String clave;
-    @SerializedName("idcurso")
+    @SerializedName("IdCurso")
     @Expose
-    private Integer idcurso;
-    @SerializedName("Flores")
+    private Integer idCurso;
+    @SerializedName("IdUsuario")
     @Expose
-    private String flores;
-    public final static Creator<ObjListaPROFESOR> CREATOR = new Creator<ObjListaPROFESOR>() {
+    private Integer idUsuario;
+    @SerializedName("Eliminado")
+    @Expose
+    private Boolean eliminado;
+    @SerializedName("CodigoError")
+    @Expose
+    private Integer codigoError;
+    @SerializedName("DescripcionError")
+    @Expose
+    private String descripcionError;
+    @SerializedName("MensajeError")
+    @Expose
+    private Object mensajeError;
+    public final static Parcelable.Creator<ObjListaPROFESOR> CREATOR = new Creator<ObjListaPROFESOR>() {
 
 
         @SuppressWarnings({
-            "unchecked"
+                "unchecked"
         })
         public ObjListaPROFESOR createFromParcel(Parcel in) {
             return new ObjListaPROFESOR(in);
@@ -47,28 +59,32 @@ public class ObjListaPROFESOR implements Serializable, Parcelable
         }
 
     }
-    ;
-    private final static long serialVersionUID = -1412727880224427596L;
+            ;
+    private final static long serialVersionUID = 4797810042281812387L;
 
     protected ObjListaPROFESOR(Parcel in) {
-        this.iddocente = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.idDocente = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.nombre = ((String) in.readValue((String.class.getClassLoader())));
-        this.apellidos = ((String) in.readValue((String.class.getClassLoader())));
+        this.apellido = ((String) in.readValue((String.class.getClassLoader())));
         this.usuario = ((String) in.readValue((String.class.getClassLoader())));
         this.clave = ((String) in.readValue((String.class.getClassLoader())));
-        this.idcurso = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        this.flores = ((String) in.readValue((String.class.getClassLoader())));
+        this.idCurso = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.idUsuario = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.eliminado = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
+        this.codigoError = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.descripcionError = ((String) in.readValue((String.class.getClassLoader())));
+        this.mensajeError = ((Object) in.readValue((Object.class.getClassLoader())));
     }
 
     public ObjListaPROFESOR() {
     }
 
-    public Integer getIddocente() {
-        return iddocente;
+    public Integer getIdDocente() {
+        return idDocente;
     }
 
-    public void setIddocente(Integer iddocente) {
-        this.iddocente = iddocente;
+    public void setIdDocente(Integer idDocente) {
+        this.idDocente = idDocente;
     }
 
     public String getNombre() {
@@ -79,12 +95,12 @@ public class ObjListaPROFESOR implements Serializable, Parcelable
         this.nombre = nombre;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getUsuario() {
@@ -103,34 +119,70 @@ public class ObjListaPROFESOR implements Serializable, Parcelable
         this.clave = clave;
     }
 
-    public Integer getIdcurso() {
-        return idcurso;
+    public Integer getIdCurso() {
+        return idCurso;
     }
 
-    public void setIdcurso(Integer idcurso) {
-        this.idcurso = idcurso;
+    public void setIdCurso(Integer idCurso) {
+        this.idCurso = idCurso;
     }
 
-    public String getFlores() {
-        return flores;
+    public Integer getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setFlores(String flores) {
-        this.flores = flores;
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Boolean getEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(Boolean eliminado) {
+        this.eliminado = eliminado;
+    }
+
+    public Integer getCodigoError() {
+        return codigoError;
+    }
+
+    public void setCodigoError(Integer codigoError) {
+        this.codigoError = codigoError;
+    }
+
+    public String getDescripcionError() {
+        return descripcionError;
+    }
+
+    public void setDescripcionError(String descripcionError) {
+        this.descripcionError = descripcionError;
+    }
+
+    public Object getMensajeError() {
+        return mensajeError;
+    }
+
+    public void setMensajeError(Object mensajeError) {
+        this.mensajeError = mensajeError;
     }
 
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeValue(iddocente);
+        dest.writeValue(idDocente);
         dest.writeValue(nombre);
-        dest.writeValue(apellidos);
+        dest.writeValue(apellido);
         dest.writeValue(usuario);
         dest.writeValue(clave);
-        dest.writeValue(idcurso);
-        dest.writeValue(flores);
+        dest.writeValue(idCurso);
+        dest.writeValue(idUsuario);
+        dest.writeValue(eliminado);
+        dest.writeValue(codigoError);
+        dest.writeValue(descripcionError);
+        dest.writeValue(mensajeError);
     }
 
     public int describeContents() {
-        return  0;
+        return 0;
     }
 
 }

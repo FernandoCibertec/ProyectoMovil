@@ -18,7 +18,7 @@
             android:text="idProfesor" />
 
         <EditText
-            android:id="@+id/igresoPtxtidprofesor"
+            android:id="@+id/ingresoPtxtidprofesor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -107,12 +107,32 @@
             android:layout_height="wrap_content"
             android:text="IdCurso" />
 
-        <Spinner
-            android:id="@+id/ingresoPspidcurso"
-            android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/ingresoPtxtidcurso"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvIdcurso"
-            android:layout_margin="15dp"/>
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IdUsuario" />
+
+        <EditText
+            android:id="@+id/ingresoPtxtIdUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
     </TableRow>
 
     <TableRow

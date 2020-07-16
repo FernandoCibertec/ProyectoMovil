@@ -19,12 +19,12 @@ public class AdaptadorPROFESOR2(val ListaInterna:List<ObjListaPROFESOR>, val cli
             val tvTextoInferior = itemView.findViewById(R.id.ProfesorID) as TextView
             tvTextoSuperior.text = oObjListaPROFESOR.usuario.toString()
             tvTextoDescripcion.text =  oObjListaPROFESOR.nombre.toString()
-            tvTextoInferior.text = oObjListaPROFESOR.idcurso.toString()
+            tvTextoInferior.text = oObjListaPROFESOR.idDocente.toString()
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdaptadorPROFESOR2ViewHolder {
         val v: View = LayoutInflater.from(parent?.context)
-            .inflate(R.layout.activity_profesor_mnt,parent,false)
+            .inflate(R.layout.profesor,parent,false)
         return AdaptadorPROFESOR2.AdaptadorPROFESOR2ViewHolder(v)
     }
     override fun getItemCount(): Int {
@@ -33,7 +33,7 @@ public class AdaptadorPROFESOR2(val ListaInterna:List<ObjListaPROFESOR>, val cli
     override fun onBindViewHolder(holder: AdaptadorPROFESOR2ViewHolder, position: Int) {
         holder?.itemView.ProfesorUsuario?.text  = ListaInterna.get(position).usuario.toString()
         holder?.itemView.ProfesorNombre?.text =  ListaInterna.get(position).nombre.toString()
-        holder?.itemView.ProfesorID?.text = ListaInterna.get(position).idcurso.toString()
+        holder?.itemView.ProfesorID?.text = ListaInterna.get(position).idDocente.toString()
         holder?.itemView?.setOnClickListener { clickListener(ListaInterna.get(position)) }
     }
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),

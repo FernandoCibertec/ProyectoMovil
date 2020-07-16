@@ -7,11 +7,13 @@ import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.Button
+import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectomovil.Adaptador.AdaptadorPROFESOR2
 import com.example.proyectomovil.R
 import com.example.proyectomovil.pojo.ObjListaPROFESOR
+import com.example.proyectomovil.pojo.ObjPROFESOR
 import com.example.proyectomovil.pojo.PROFESORRESPONSE
 import com.example.proyectomovil.rest.RestProfesor
 import com.example.proyectomovil.rest.iProfesor
@@ -20,12 +22,15 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.lang.Exception
+import java.lang.Integer.parseInt
 
 class ProfesorMnt : AppCompatActivity() {
 
     lateinit var oNuevoProfesor: Dialog
     lateinit var oLista:List<ObjListaPROFESOR>
     lateinit var oAdaptadorPROFESOR2: AdaptadorPROFESOR2
+    lateinit var oObjPROFESOR:ObjPROFESOR
+    var TIPOACCION:String = "N"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,25 +60,73 @@ class ProfesorMnt : AppCompatActivity() {
         oNuevoProfesor.show()
     }
 
-    fun BuscarProfesor(){
+    fun GrabarProfesor(){
+        var onuevoIdDocente = oNuevoProfesor.findViewById(R.id.ingresoPtxtidprofesor) as EditText
+        var onuevoNombre = oNuevoProfesor.findViewById(R.id.ingresoPtxtnombres) as EditText
+        var onuevoApellido = oNuevoProfesor.findViewById(R.id.ingresoPtxtapellidos) as EditText
+        var onuevoUsuario = oNuevoProfesor.findViewById(R.id.ingresoPtxtusuario) as EditText
+        var onuevoClave = oNuevoProfesor.findViewById(R.id.ingresoPtxtclave) as EditText
+        var onuevoIdCurso = oNuevoProfesor.findViewById(R.id.ingresoPtxtidcurso) as EditText
+        var onuevoIdUsuario = oNuevoProfesor.findViewById(R.id.ingresoPtxtIdUsuario) as EditText
+
+        if (TIPOACCION=="N"){
+            oObjPROFESOR = ObjPROFESOR()
+            oObjPROFESOR.idDocente=0;
+            oObjPROFESOR.nombre = onuevoNombre.text.toString()
+            oObjPROFESOR.apellido = onuevoApellido.text.toString()
+            oObjPROFESOR.usuario = onuevoUsuario.text.toString()
+            oObjPROFESOR.clave = onuevoClave.text.toString()
+            oObjPROFESOR.idCurso = parseInt(onuevoIdCurso.text.toString())
+            oObjPROFESOR.idUsuario = parseInt(onuevoIdUsuario.text.toString())
+
+        }
+
+        val oiProfesor:iProfesor
+        oiProfesor= RestProfesor().getPROFESOR()!!.create(iProfesor::class.java)
+        val call: Call<ObjPROFESOR> = oiProfesor.getRegistraModifica(oObjPROFESOR.idDocente, oObjPROFESOR.nombre,
+            oObjPROFESOR.apellido, oObjPROFESOR.usuario, oObjPROFESOR.clave,
+            oObjPROFESOR.idCurso.toString(),oObjPROFESOR.idUsuario.toString() , TIPOACCION)
+        call.enqueue(object :Callback<ObjPROFESOR?>{
+            override fun onResponse(    call: Call<ObjPROFESOR?>?,
+                                        response: retrofit2.Response<ObjPROFESOR?>
+            ) {
+                Log.d("body", response.body().toString())
+                try {
+                    oObjPROFESOR.idDocente = response.body()!!.idDocente
+                    MostrarListado()
+                }catch (e:java.lang.Exception){
+                    Log.d("AppWs", e.toString())
+                }
+            }
+
+            override fun onFailure(call: Call<ObjPROFESOR?>, t: Throwable) {
+                Log.d("ERROR", t.toString())
+            }
+        })
+
+    }
+
+    public fun BuscarProfesor(){
         oLista = ArrayList<ObjListaPROFESOR>()
-        var oiProfesor = RestProfesor().getPROFESOR()!!.create(iProfesor::class.java)
-        var call: Call<PROFESORRESPONSE> = oiProfesor.getLista(0, edtBuscarProfesor.text.toString(), "", "", "", "")
+        val oiProfesor:iProfesor
+        oiProfesor= RestProfesor().getPROFESOR()!!.create(iProfesor::class.java)
+        val call: Call<PROFESORRESPONSE> = oiProfesor.getLista(0, edtBuscarProfesor.text.toString(), "", "", "", "", "")
         call.enqueue(object :Callback<PROFESORRESPONSE?>{
             override fun onResponse(
                 call: Call<PROFESORRESPONSE?>,
-                response: Response<PROFESORRESPONSE?>
+                response: retrofit2.Response<PROFESORRESPONSE?>
             ) {
+                Log.d("body", response.body().toString())
                 try {
                     oLista = response.body()!!.objListaPROFESOR
-
-                }catch (e:Exception){
-                    Log.d("AppWs", "Error:${e.message}")
+                    MostrarListado()
+                }catch (e:java.lang.Exception){
+                    Log.d("AppWs", e.toString())
                 }
             }
 
             override fun onFailure(call: Call<PROFESORRESPONSE?>, t: Throwable) {
-                Log.d("AppWs", "Error:${call.toString()}")
+                Log.d("ERROR", t.toString())
             }
         })
     }
@@ -87,7 +140,6 @@ class ProfesorMnt : AppCompatActivity() {
         ll.orientation = LinearLayoutManager.VERTICAL
         mntPRecycler.setLayoutManager(ll)
         mntPRecycler.setHasFixedSize(true)
-
         mntPRecycler.setAdapter(oAdaptadorPROFESOR2)
     }
 
@@ -109,4 +161,8 @@ class ProfesorMnt : AppCompatActivity() {
             oNuevoPaciente.dismiss()
         }
         oNuevoPaciente.show()*/
+
+    public fun registroNuevoProfesor(){
+
+    }
 }

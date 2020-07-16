@@ -13,36 +13,40 @@ interface iProfesor {
     @GET(Constantes.GETLISTA_PROFESOR)
     @Headers( "Content-Type: application/json")
     fun getLista
-                (@Query(value = "iddocente") piddocente:Int,
-                 @Query(value = "nombre") pnombre:String,
-                 @Query(value = "apellidos") papellidos:String,
-                 @Query(value = "usuario") pusuario:String,
-                 @Query(value = "clave") pclave:String,
-                 @Query(value = "idcurso") pidcurso:String
+                (@Query(value = "IdDocente") pIdDocente:Int,
+                 @Query(value = "Nombre") pNombre:String,
+                 @Query(value = "Apellido") pApellido:String,
+                 @Query(value = "Usuario") pUsuario:String,
+                 @Query(value = "Clave") pClave:String,
+                 @Query(value = "IdCurso") pIdCurso:String,
+                 @Query(value = "IdUsuario") pIdUsuario:String
     ): Call<PROFESORRESPONSE>
 
     @GET(Constantes.GETLISTARKEY_PROFESOR)
     @Headers( "Content-Type: application/json")
     fun getListarKey(
-        @Query(value = "piddocente") piddocente:Int
+        @Query(value = "pIdDocente") pIdDocente:Int
     ): Call<PROFESORRESPONSE>
 
     @GET(Constantes.GETRegistraModifica_PROFESOR)
     @Headers( "Content-Type: application/json")
     fun getRegistraModifica(
-                @Query(value = "pTipoTransaccion") pTipoTransaccion:String ,
-                @Query(value = "iddocente") piddocente:Int,
-                @Query(value = "nombre") pnombre:String,
-                @Query(value = "apellidos") papellidos:String,
-                @Query(value = "usuario") pusuario:String,
-                @Query(value = "clave") pclave:String,
-                @Query(value = "idcurso") pidcurso:String
-    ): Call<PROFESORRESPONSE>
+                @Query(value = "IdDocente") pIdDocente:Int,
+                @Query(value = "Nombre") pNombre:String,
+                @Query(value = "Apellido") pApellido:String,
+                @Query(value = "Usuario") pUsuario:String,
+                @Query(value = "Clave") pClave:String,
+                @Query(value = "IdCurso") pIdCurso:String,
+                @Query(value = "IdUsuario") pIdUsuario:String,
+                @Query(value = "pTipoTransaccion") pTipoTransaccion:String
+    ): Call<ObjPROFESOR>
+
+    /*http://localhost:50856/Profesor/RegistraModifica?IdDocente=0&Nombre=nin&Apellido=hsj&Usuario=sj&Clave=dk&IdCurso=1&IdUsuario=1&pTipoTransaccion=N*/
 
     @GET(Constantes.GETElimina_PROFESOR)
     @Headers( "Content-Type: application/json")
     fun getElimina(
-        @Query(value = "iddocente") piddocente:Int
+        @Query(value = "pIdDocente") pIdDocente:Int
     ): Call<ObjPROFESOR>
 
 

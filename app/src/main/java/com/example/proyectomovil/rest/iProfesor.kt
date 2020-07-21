@@ -25,7 +25,13 @@ interface iProfesor {
     @GET(Constantes.GETLISTARKEY_PROFESOR)
     @Headers( "Content-Type: application/json")
     fun getListarKey(
-        @Query(value = "pIdDocente") pIdDocente:Int
+        @Query(value = "dni") dni:Int,
+        @Query(value = "Nombre") pNombre:String,
+        @Query(value = "Apellido") pApellido:String,
+        @Query(value = "Usuario") pUsuario:String,
+        @Query(value = "Clave") pClave:String,
+        @Query(value = "IdCurso") pIdCurso:String,
+        @Query(value = "IdUsuario") pIdUsuario:String
     ): Call<PROFESORRESPONSE>
 
     @GET(Constantes.GETRegistraModifica_PROFESOR)
@@ -46,7 +52,7 @@ interface iProfesor {
     @GET(Constantes.GETElimina_PROFESOR)
     @Headers( "Content-Type: application/json")
     fun getElimina(
-        @Query(value = "pIdDocente") pIdDocente:Int
+        @Query(value = "IdDocente") IdDocente:Int
     ): Call<ObjPROFESOR>
 
 

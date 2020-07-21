@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerVertical="true">
-        
+
         <ImageView
             android:layout_width="250dp"
             android:layout_height="200dp"
@@ -21,57 +21,46 @@
             android:layout_gravity="center_horizontal">
         </ImageView>
 
-        <TableRow
+        <EditText
+            android:id="@+id/txtUsuario"
+            style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_centerVertical="false">
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/login_edit_background"
+            android:drawableStart="@drawable/usericon"
+            android:drawablePadding="15dp"
+            android:hint="Usuario"
+            android:padding="10dp"></EditText>
 
-            <ImageButton
-
-                android:id="@+id/ibtnProfesor"
-                android:layout_width="195dp"
-                android:layout_height="272dp"
-                android:layout_gravity="left"
-                android:layout_marginStart="7dp"
-                android:layout_marginEnd="7dp"
-                android:src="@drawable/profesoricon" />
-
-            <ImageButton
-
-                android:id="@+id/ibtnEstudiante"
-                android:layout_width="195dp"
-                android:layout_height="272dp"
-                android:layout_gravity="left"
-                android:src="@drawable/estudianteicon" />
-
-        </TableRow
-            >
-        <TableRow
+        <EditText
+            android:id="@+id/txtContra"
+            style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_centerVertical="false">
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/login_edit_background"
+            android:drawableStart="@drawable/iconpass"
+            android:drawablePadding="15dp"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:padding="10dp"></EditText>
 
-            <TextView
-                android:text="Profesor"
-                android:layout_width="195dp"
-                tools:ignore="HardcodedText"
-                android:textSize="20dp"
-                android:textColor="#ffff"
-                android:layout_marginStart="70dp">
-            </TextView>
-            <TextView
-                android:text="Estudiante"
-                android:layout_width="195dp"
-                android:textSize="20dp"
-                android:textColor="#ffff"
-                tools:ignore="HardcodedText">
-            </TextView>
-
-
-        </TableRow>
-
-
+        <Button
+            android:id="@+id/ebtn_Ingresar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/botoningresarprofesor_background"
+            android:text="Ingresar"
+            android:textAllCaps="false"
+            android:textColor="#ffff"
+            android:textSize="21dp"></Button>
     </LinearLayout>
 </RelativeLayout>

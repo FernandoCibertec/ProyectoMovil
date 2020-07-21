@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="4dip">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="1dip">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="-230dip"
+                app:srcCompat="@drawable/inmigracion" />
+
+            <TextView
+                android:id="@+id/IdCurso"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_above="@+id/ProfesorNombre"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="60dip"
+                android:layout_marginLeft="180dip"
+                android:layout_marginBottom="-32dp"
+                android:text="TextView" />
+
+
+
+            <TextView
+                android:id="@+id/NombreCurso"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="60dip"
+                android:layout_marginLeft="35dip"
+                android:layout_marginTop="21dip"
+                android:text="TextView"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

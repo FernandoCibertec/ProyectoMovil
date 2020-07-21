@@ -5,44 +5,38 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".Activities.ProfesorMnt">
-
+    tools:context=".Activities.CursoMnt">
 
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/textView21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mantenimiento Profesores"
+            android:text="Mantenimiento de Curso"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
     </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
         <Button
-            android:id="@+id/mntPbtnBuscar"
+            android:id="@+id/mntCConsulta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Consultar" />
 
         <Button
-            android:id="@+id/mntPbtnNuevo"
+            android:id="@+id/mntCbtnNuevo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="btnRegistro_OnClick"
             android:text="Nuevo" />
 
         <Button
-            android:id="@+id/mntPbtnSalir"
+            android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Salir" />
@@ -53,7 +47,7 @@
         android:layout_height="match_parent" >
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/mntPRecycler"
+            android:id="@+id/recyclerViewCurso"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </TableRow>

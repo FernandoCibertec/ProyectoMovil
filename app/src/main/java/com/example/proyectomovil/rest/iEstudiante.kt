@@ -45,6 +45,6 @@ interface iEstudiante {
     @GET(Constantes.GETElimina_ESTUDIANTE)
     @Headers( "Content-Type: application/json")
     fun getElimina(
-        @Query(value = "pIdEstudiante") pIdEstudiante:Int
+        @Query(value = "IdEstudiante") IdEstudiante:Int
     ): Call<ObjESTUDIANTE>
 }

@@ -118,7 +118,7 @@ class ProfesorMnt : AppCompatActivity() {
         oLista = ArrayList<ObjListaPROFESOR>()
         val oiProfesor:iProfesor
         oiProfesor= RestProfesor().getPROFESOR()!!.create(iProfesor::class.java)
-        val call: Call<PROFESORRESPONSE> = oiProfesor.getLista(0, edtBuscarProfesor.text.toString(), "", "", "", "", "")
+        val call: Call<PROFESORRESPONSE> = oiProfesor.getLista(0, "", "", "", "", "", "")
         call.enqueue(object :Callback<PROFESORRESPONSE?>{
             override fun onResponse(
                 call: Call<PROFESORRESPONSE?>,

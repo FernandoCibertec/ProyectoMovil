@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/login_background"
+    tools:context=".Activities.Selecciondemantenimientos">
+
+    <ImageView
+        android:id="@+id/ivProfesor"
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="15dp"
+        app:srcCompat="@drawable/teacher"/>
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-smallcaps"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="75dp"
+        android:text="Mantenimiento Profesor"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <ImageView
+        android:id="@+id/ivEstudiante"
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="245dp"
+        app:srcCompat="@drawable/student" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="315dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Mantenimiento Estudiante"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+    <ImageView
+        android:id="@+id/ivCurso"
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="475dp"
+        app:srcCompat="@drawable/subject" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="550dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Mantenimiento Curso"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+</RelativeLayout>

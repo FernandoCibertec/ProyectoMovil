@@ -9,15 +9,11 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectomovil.Adaptador.AdaptadorESTUDIANTE
-import com.example.proyectomovil.Adaptador.AdaptadorPROFESOR2
 import com.example.proyectomovil.R
 import com.example.proyectomovil.pojo.*
 import com.example.proyectomovil.rest.RestEstudiante
-import com.example.proyectomovil.rest.RestProfesor
 import com.example.proyectomovil.rest.iEstudiante
-import com.example.proyectomovil.rest.iProfesor
 import kotlinx.android.synthetic.main.activity_estudiante_mnt.*
-import kotlinx.android.synthetic.main.activity_profesor_mnt.*
 import retrofit2.Call
 import retrofit2.Callback
 import java.lang.Integer.parseInt
@@ -41,7 +37,7 @@ class EstudianteMnt : AppCompatActivity() {
             oNuevoEstudiante = Dialog(this)
             oNuevoEstudiante.requestWindowFeature(Window.FEATURE_NO_TITLE)
             oNuevoEstudiante.setCancelable(false)
-            oNuevoEstudiante.setContentView(R.layout.activity_ingreso_profesor)
+            oNuevoEstudiante.setContentView(R.layout.activity_ingreso_estudiante)
             var obtnGrabar = oNuevoEstudiante.findViewById(R.id.ingresoEbtnGrabar) as Button
             var obtnCerrar = oNuevoEstudiante.findViewById(R.id.ingresoEbtnCerrar) as Button
             var obtnEliminar = oNuevoEstudiante.findViewById(R.id.ingresoEbtnElimina) as Button
@@ -63,7 +59,7 @@ class EstudianteMnt : AppCompatActivity() {
         oLista = ArrayList<ObjListaESTUDIANTE>()
         val oiEstudiante: iEstudiante
         oiEstudiante= RestEstudiante().getESTUDIANTE()!!.create(iEstudiante::class.java)
-        val call: Call<ESTUDIANTERESPONSE> = oiEstudiante.getLista(0, "","",mntEedtDni.text.toString(), "", "", "")
+        val call: Call<ESTUDIANTERESPONSE> = oiEstudiante.getLista(0, "","","", "", "", "")
         call.enqueue(object : Callback<ESTUDIANTERESPONSE?> {
             override fun onResponse(
                 call: Call<ESTUDIANTERESPONSE?>,
@@ -84,11 +80,11 @@ class EstudianteMnt : AppCompatActivity() {
         })
     }
 
-    public fun CargarVentanaProfesor(){
+    public fun CargarVentanaEstudiante(){
         oNuevoEstudiante = Dialog(this)
         oNuevoEstudiante.requestWindowFeature(Window.FEATURE_NO_TITLE)
         oNuevoEstudiante.setCancelable(false)
-        oNuevoEstudiante.setContentView(R.layout.activity_ingreso_profesor)
+        oNuevoEstudiante.setContentView(R.layout.activity_ingreso_estudiante)
         var obtnGrabar = oNuevoEstudiante.findViewById(R.id.ingresoEbtnGrabar) as Button
         var obtnCerrar = oNuevoEstudiante.findViewById(R.id.ingresoEbtnCerrar) as Button
         var obtnEliminar = oNuevoEstudiante.findViewById(R.id.ingresoEbtnElimina) as Button
@@ -111,15 +107,15 @@ class EstudianteMnt : AppCompatActivity() {
         oAdaptadorESTUDIANTE = AdaptadorESTUDIANTE(oLista){
             oObjESTUDIANTE = it
             TIPOACCION = "A"
-            CargarVentanaProfesor()
+            CargarVentanaEstudiante()
             MostrarRegistro()
         }
-        mntPRecycler.setAdapter(oAdaptadorESTUDIANTE)
+        recyclerviewEstudiante.setAdapter(oAdaptadorESTUDIANTE)
         val ll= LinearLayoutManager(this)
         ll.orientation = LinearLayoutManager.VERTICAL
-        mntPRecycler.setLayoutManager(ll)
-        mntPRecycler.setHasFixedSize(true)
-        mntPRecycler.setAdapter(oAdaptadorESTUDIANTE)
+        recyclerviewEstudiante.setLayoutManager(ll)
+        recyclerviewEstudiante.setHasFixedSize(true)
+        recyclerviewEstudiante.setAdapter(oAdaptadorESTUDIANTE)
     }
 
     fun MostrarRegistro(){
@@ -136,7 +132,7 @@ class EstudianteMnt : AppCompatActivity() {
         onuevoNombre.setText(oObjESTUDIANTE.nombre)
         onuevoApellido.setText(oObjESTUDIANTE.apellido)
         onuevoDni.setText(oObjESTUDIANTE.dni)
-        onuevoIdgrado.setText(oObjESTUDIANTE.idGrado)
+        onuevoIdgrado.setText(oObjESTUDIANTE.idGrado.toString())
         onuevoCodigo.setText(oObjESTUDIANTE.codEstado.toString())
         onuevoIdUsuario.setText(oObjESTUDIANTE.idUsuario.toString())
     }

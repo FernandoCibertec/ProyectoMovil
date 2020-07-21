@@ -4,12 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.proyectomovil.R
 
-class EstudianteLogin : AppCompatActivity() {
-
+class IngresoCurso : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_estudiante_login)
-
-
+        setContentView(R.layout.activity_ingreso_curso)
     }
 }
